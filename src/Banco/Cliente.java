@@ -20,6 +20,14 @@ public class Cliente extends Persona {
     public Cliente(String nombre, String DNI, boolean tipo) {
         super(nombre, DNI, tipo);
     }
+
+    public boolean isPremium() {
+        return Premium;
+    }
+
+    public void setPremium(boolean Premium) {
+        this.Premium = Premium;
+    }
     
     public int getSaldo() {
         return saldo;
