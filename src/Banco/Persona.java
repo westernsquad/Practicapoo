@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author guill
  */
 public class Persona {
-    private String nombre;
-    private String DNI;
+    String nombre;
+    String DNI;
     private boolean tipo;//true cliente y false=agente
 
     public Persona(String nombre, String DNI, boolean tipo) {

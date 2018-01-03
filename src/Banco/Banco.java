@@ -21,29 +21,24 @@ import java.util.Iterator;
  * @author guill
  */
 public class Banco {
-    private Cliente cliente;
-    private ClientePremium clienteP;
-    private final ArrayList<Cliente> bancoCli;
-   // FileWriter fic =null;
-   // BufferedWriter buff =null;
-    //PrintWriter salida = null;
-    
+    private ArrayList<Cliente> bancoCli;
 
- public Banco () {
-    bancoCli = new ArrayList();
-}
-public int consultar (String numero){
+    public Banco() {
+        this.bancoCli = new ArrayList<Cliente>();
+    }
+    
+public Cliente consultar (String numero){
   
 for (Iterator it = bancoCli.iterator();it.hasNext();){
    Cliente cl = (Cliente) it.next();
    
    if (cl.getDNI().equals(numero)) {
-       return 1; }
+       return cl; }
   }
-  return 0; 
+  return null; 
  }
 public Cliente comprobar (String nombre){
-  boolean encontrado;
+  boolean encontrado = false;
   Cliente cp = null;
 for (Iterator it = bancoCli.iterator();it.hasNext();){
    Cliente cl = (Cliente) it.next();
@@ -51,30 +46,33 @@ for (Iterator it = bancoCli.iterator();it.hasNext();){
        encontrado =true;
        cp=cl;
        
-   }
-  }
+   } 
+}
     if (encontrado = true){
         return cp;
     }else{
             return null;
     }
- }
+}
+
  
  public Banco add (Cliente cliente){
      
-          if(consultar(cliente.getDNI())==0){
+          if(consultar(cliente.getDNI())!= null){
               System.out.println("Este cliente ya esta en el banco");
           } else {
                bancoCli.add(cliente);
+               System.out.println("Este cliente esta en el banco");
                 return this;
           }
      
   return this;
  }
  
- public Banco remove (String dni){
-     if(consultar(dni)==1){
+ public Banco remove (Cliente cliente){
+     if(consultar(cliente.getDNI())!=null){
         bancoCli.remove(cliente);
+        System.out.println("Este cliente ha sido eliminado del banco");
         return this;
      }else{
          return this;
@@ -82,29 +80,29 @@ for (Iterator it = bancoCli.iterator();it.hasNext();){
      
  }
  
- public void mejorar1(String Nombre){
-     
- }
   public void mejorar (String nombre){
       for (Iterator it = bancoCli.iterator();it.hasNext();){
           Cliente cl = (Cliente) it.next();
           if (nombre.equals(cl.getNombre())) {
-              
+              cl.setPremium(true);
+              System.out.println("Este cliente ahora es premium");
+          }else {
+              System.out.println("Este cliente no es premium");
           }
          
       }
   }
       
       
-  public void comprobarPremium (String nombre){
-      
-       Cliente cli = comprobar(nombre);
-      if (cli.isPremium()){
-          System.out.println("Ya es un cliente premium");
-      }else {
-          cli.setPremium(true);
-          System.out.println("ahora" + cli.getNombre() + "es cliente premium");
-      }
+  public void comprobarPremium (Cliente clie){
+ 
+        if (clie.isPremium()){
+            System.out.println("Ya es un cliente premium");
+        }else {
+            clie.setPremium(true);
+            System.out.println("ahora " + clie.getNombre() + " es cliente premium");
+        }
+       
   }
   
   
@@ -112,7 +110,7 @@ for (Iterator it = bancoCli.iterator();it.hasNext();){
       try(FileOutputStream fileOutputStream = new FileOutputStream(fichero);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 	  ){
-            objectOutputStream.writeObject(this.bancoCli);
+            objectOutputStream.writeObject(bancoCli);
         } catch(Exception ex){
             System.out.println("Error serializando");
             System.out.println(ex.getCause());
@@ -141,13 +139,11 @@ for (Iterator it = bancoCli.iterator();it.hasNext();){
             System.out.println(ex.getMessage());
         }
     }
-  
- 
-  // fic = new FileWriter(numero);
-   // buff = new BufferedWriter(fic);
-   // salida=new PrintWriter(buff);
-}
- 
+  public int mostrar(){
+     int num = 0;
+     num= bancoCli.size();
+     return num;
+    }    
   // fic = new FileWriter(numero);
    // buff = new BufferedWriter(fic);
    // salida=new PrintWriter(buff);

@@ -14,10 +14,12 @@ import java.util.ArrayList;
 public class ClientePremium extends Cliente {
     private AgenteDeInversiones agente;
 
-    public ClientePremium(AgenteDeInversiones agente, String nombre, String DNI, boolean tipo) {
-        super(nombre, DNI, tipo);
+    public ClientePremium(AgenteDeInversiones agente, int saldo, ArrayList<PaqueteDeAcciones> CarteraAcciones, String nombre, String DNI, boolean tipo) {
+        super(saldo, CarteraAcciones, nombre, DNI, tipo);
         this.agente = agente;
     }
+
+    
 
     public AgenteDeInversiones getAgente() {
         return agente;

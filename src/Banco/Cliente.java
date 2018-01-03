@@ -17,9 +17,13 @@ public class Cliente extends Persona {
     private ArrayList <PaqueteDeAcciones> CarteraAcciones;
     private boolean Premium = false ;
 
-    public Cliente(String nombre, String DNI, boolean tipo) {
+    public Cliente(int saldo, ArrayList<PaqueteDeAcciones> CarteraAcciones, String nombre, String DNI, boolean tipo) {
         super(nombre, DNI, tipo);
+        this.saldo = saldo;
+        this.CarteraAcciones = CarteraAcciones;
     }
+
+    
 
     public boolean isPremium() {
         return Premium;
