@@ -5,10 +5,26 @@
  */
 package Mensajes;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author dpemar
+ * @author dlahera
  */
-public class MensajeCompra {
-    
+public class MensajeCompra extends Mensaje {
+   	private double cantidadMaxima;
+
+   	public MensajeCompra (int ID, string cliente, string empresa, double cantidadMaxima) {
+       		super(ID, Cliente, Empresa);
+       		this.cantidadMaxima = cantidadMaxima;
+    	}
+	
+	public double getCantidadMaxima() {
+		return cantidadMaxima;
+	}
+	
+	public void setcantidadMaxima(double cantidadMaxima) {
+		this.cantidadMaxima = cantidadMaxima;
+	}
+
 }
