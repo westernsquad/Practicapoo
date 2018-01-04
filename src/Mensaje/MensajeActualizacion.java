@@ -5,10 +5,27 @@
  */
 package Mensajes;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author dpemar
+ * @author dlahera
  */
-public class MensajeActualizacion {
-    
+public class MensajeActualizacion extends Mensaje {
+		
+	private string fecha;
+
+	public MensajeCompra (int ID, string cliente, string empresa, string fecha) {
+		super(ID, cliente, empresa);
+		this.fecha = fecha;
+	}
+
+	public string getFecha() {
+		return fecha;
+	}
+	
+	public void setFecha(string fecha) {
+		this.fecha = fecha;
+	}
+
 }
