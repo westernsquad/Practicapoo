@@ -5,10 +5,27 @@
  */
 package Mensajes;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author dpemar
+ * @author dlahera
  */
-public class MensajeVenta {
-    
+public class MensajeVenta extends Mensaje {
+		
+	private int cantidadAcciones;
+
+	public MensajeVenta (int ID, string cliente, string empresa, int cantidadAcciones) {
+		super(ID, cliente, empresa);
+		this.cantidadAcciones = cantidadAcciones;
+	}
+
+	public int getCantidadAcciones() {
+		return cantidadAcciones;
+	}
+	
+	public void setCantidadAcciones(int cantidadAcciones) {
+		this.cantidadAcciones = cantidadAcciones;
+	}
+
 }
